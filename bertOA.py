@@ -86,9 +86,15 @@ def train(train_data, valid_data):
 
     x = bert_model([x1_in, x2_in])
     x = Lambda(lambda x: x[:, 0])(x)
-    p = Dense(1, activation='sigmoid')(x) # fix:对于多分类问题，结构有待修改
+    p1 = Dense(1, activation='sigmoid')(x) # fix:对于多分类问题，结构有待修改
+    '''
+    p2 = Dense(1, activation='sigmoid')(x)
+    p3 = Dense(1, activation='sigmoid')(x)
+    p4 = Dense(1, activation='sigmoid')(x)
+    '''
 
-    model = Model([x1_in, x2_in], p)
+    model = Model([x1_in, x2_in], p1)
+    # model = Model([x1_in, x2_in], [p1,p2,p3,p4])
     model.compile(
         loss='binary_crossentropy',
         optimizer=Adam(1e-5), # 用足够小的学习率
