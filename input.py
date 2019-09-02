@@ -7,13 +7,13 @@ analyCSVpath = "data/倾向性分析数据集.csv"  # 已评分数据集(CSV文�
 def classi(score):  # 根据评分分成四类
     score = float(score)
     if (score >= 0 and score < 0.25):
-        return 0 # [1,0,0,0]
+        return [1,0,0,0]
     if (score >= 0.25 and score < 0.5):
-        return 1 # [0,1,0,0]
+        return [0,1,0,0]
     if (score >= 0.5 and score < 0.75):
-        return 2 # [0,0,1,0]
+        return [0,0,1,0]
     if (score >= 0.75 and score < 1):
-        return 3 # [0,0,0,1]
+        return [0,0,0,1]
 
 fp2 = open(analyCSVpath, 'r', encoding='utf-8')
 analyCSV = csv.reader(fp2)

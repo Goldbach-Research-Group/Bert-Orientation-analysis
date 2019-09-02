@@ -61,7 +61,7 @@ class data_generator:
                 y = d[1]
                 X1.append(x1)
                 X2.append(x2)
-                Y.append([y])
+                Y.append(y) #应对多输出，这里改了
                 if len(X1) == self.batch_size or i == idxs[-1]:
                     X1 = seq_padding(X1)
                     X2 = seq_padding(X2)
@@ -86,15 +86,9 @@ def train(train_data, valid_data):
 
     x = bert_model([x1_in, x2_in])
     x = Lambda(lambda x: x[:, 0])(x)
-    p1 = Dense(1, activation='sigmoid')(x) # fix:对于多分类问题，结构有待修改
-    '''
-    p2 = Dense(1, activation='sigmoid')(x)
-    p3 = Dense(1, activation='sigmoid')(x)
-    p4 = Dense(1, activation='sigmoid')(x)
-    '''
+    p = Dense(4, activation='sigmoid')(x)
 
-    model = Model([x1_in, x2_in], p1)
-    # model = Model([x1_in, x2_in], [p1,p2,p3,p4])
+    model = Model([x1_in, x2_in], p)
     model.compile(
         loss='binary_crossentropy',
         optimizer=Adam(1e-5), # 用足够小的学习率
