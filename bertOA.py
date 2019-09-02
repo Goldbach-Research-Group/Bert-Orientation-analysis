@@ -51,7 +51,7 @@ class data_generator:
 
     def __iter__(self):
         while True:
-            idxs = range(len(self.data))
+            idxs = np.array(range(len(self.data)))
             np.random.shuffle(idxs)
             X1, X2, Y = [], [], []
             for i in idxs:
