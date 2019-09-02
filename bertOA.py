@@ -3,9 +3,9 @@ import codecs
 
 # 初始化
 maxlen = 100
-config_path = 'chinese_L-12_H-768_A-12/bert_config.json'
-checkpoint_path = 'chinese_L-12_H-768_A-12/bert_model.ckpt'
-dict_path = 'chinese_L-12_H-768_A-12/vocab.txt'
+config_path = 'chinese_wwm_ext_L-12_H-768_A-12/bert_config.json'
+checkpoint_path = 'chinese_wwm_ext_L-12_H-768_A-12/bert_model.ckpt'
+dict_path = 'chinese_wwm_ext_L-12_H-768_A-12/vocab.txt'
 
 token_dict = {}
 

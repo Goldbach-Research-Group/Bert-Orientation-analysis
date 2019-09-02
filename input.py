@@ -24,7 +24,7 @@ for i in analyCSV:
     y.append(classi(i[2]))
 
 def partitioningData(data):
-    random_order = range(len(data))
+    random_order = np.array(range(len(data)))
     np.random.shuffle(random_order)
     train_data = [data[j] for i, j in enumerate(random_order) if i % 10 != 0]
     valid_data = [data[j] for i, j in enumerate(random_order) if i % 10 == 0]
