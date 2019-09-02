@@ -17,11 +17,9 @@ def classi(score):  # 根据评分分成四类
 
 fp2 = open(analyCSVpath, 'r', encoding='utf-8')
 analyCSV = csv.reader(fp2)
-X = []  # 答案内容
-y = []  # 对应评分
+data = []  # 读入内容
 for i in analyCSV:
-    X.append(i[1])
-    y.append(classi(i[2]))
+    data.append((i[1],classi(i[2])))
 
 def partitioningData(data):
     random_order = np.array(range(len(data)))
@@ -30,5 +28,5 @@ def partitioningData(data):
     valid_data = [data[j] for i, j in enumerate(random_order) if i % 10 == 0]
     return train_data, valid_data
 
-train_data, valid_data=partitioningData(X)
+train_data, valid_data=partitioningData(data)
 model=bertOA.train(train_data, valid_data)
