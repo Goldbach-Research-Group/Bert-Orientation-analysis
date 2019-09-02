@@ -1,6 +1,7 @@
 import csv
 import bertOA
 import numpy as np
+import pickle
 
 analyCSVpath = "data/倾向性分析数据集.csv"  # 已评分数据集(CSV文件)路径
 
@@ -30,3 +31,4 @@ def partitioningData(data):
 
 train_data, valid_data=partitioningData(data)
 model=bertOA.train(train_data, valid_data)
+pickle.dump(model, open('model.pkl', 'wb'), protocol=2)
